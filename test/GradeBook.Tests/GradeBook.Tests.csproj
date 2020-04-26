@@ -14,7 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="C:\Users\z003heje\gradebook\src\GradeBook.csproj" />
     <ProjectReference Include="..\..\src\GradeBook\GradeBook.csproj" />
   </ItemGroup>
 
