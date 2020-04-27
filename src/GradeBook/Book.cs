@@ -11,7 +11,7 @@ namespace GradeBook
             Name = name;   
         }
      
-        public void AddLetterGrade(char letter)
+        public void AddGrade(char letter)
         {
             switch(letter)
             {
@@ -45,9 +45,8 @@ namespace GradeBook
             }
             else
             {
-                Console.WriteLine("Invalid value");
+                throw new ArgumentException($"Invalid {nameof(grade)}");
             }
-            
         }
      
         public Statistics GetStatistics()
@@ -90,7 +89,27 @@ namespace GradeBook
             }
             return result;
         }
+        
+        
         private List<double> grades;
-        public string Name;
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            } 
+            set
+            {
+                if(!String.IsNullOrEmpty(value))
+                {
+                    name = value;
+                }
+                
+            }
+
+        }
+
+        private string name;
     }
 }
