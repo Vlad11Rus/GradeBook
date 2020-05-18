@@ -48,7 +48,20 @@ namespace GradeBook
 
         public override Statistics GetStatistics()
         {
-            throw new NotImplementedException();
+            var result = new Statistics();
+
+            using(var reader = File.OpenText($"{Name}.txt"))
+            {
+                var line = reader.ReadLine();
+                while(line != null )
+                {
+                    var number = double.Parse(line);
+                    result.Add(number);
+                    line = reader.ReadLine();
+                }
+            }
+
+            return result;
         }
     }
     public class InMemoryBook : Book
@@ -59,31 +72,6 @@ namespace GradeBook
             Name = name;   
         }
      
-        public void AddGrade(char letter)
-        {
-            switch(letter)
-            {
-                case 'A':
-                    AddGrade(90);
-                    break;
-
-                case 'B':
-                    AddGrade(80);
-                    break;
-
-                case 'C':
-                    AddGrade(70);
-                    break;
-
-                case 'D':
-                    AddGrade(60);
-                    break;
-
-                default:
-                    AddGrade(0);   
-                    break;         
-            }
-        }
         
         public override void AddGrade(double grade)
         {
